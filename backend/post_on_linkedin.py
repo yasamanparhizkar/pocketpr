@@ -47,11 +47,7 @@ async def main():
         1. Navigate to {config.base_url}
         2. Click on the text bar saying "Share a post".
         3. In the pop up window, type the following message: "{config.post}"
-        4. Click on the photo icon at the bottom of the pop up window; this icon says "Add a photo" when you hover above it.
-        5. In the new window, navigate to the following path: Files/Career/GenAIGenesis_2025/pocketpr/images
-        6. In the current directory, select all image files and hit "open" at the bottom of the window.
-        7. Click "Next" in Editor window.
-        8. Stop here; Do NOT post the message.
+        4. Stop here; Do NOT post the message.
         """,
         llm=llm,
         browser=browser,
