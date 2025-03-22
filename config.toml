@@ -1,0 +1,14 @@
+# Global LLM configuration
+[llm]
+model = "gpt-4o"
+base_url = "https://api.openai.com/v1"
+api_key = "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"  # Replace with your actual API key
+max_tokens = 4096
+temperature = 0.0
+
+[llm.]
+model = "gemini-2.0-flash"        # The vision model to use
+base_url = "https://generativelanguage.googleapis.com"  # API endpoint URL for gemini model
+api_key = "AIzaSyCUI6IiybH9c04MGPbttx8c2xnm0ajtvHA"                    # Your API key for gemini model
+max_tokens = 8192                           # Maximum number of tokens in the response
+temperature = 0.0    
