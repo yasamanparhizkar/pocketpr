@@ -178,3 +178,6 @@ gemini_api_key.env
 
 # frontend extra files
 */node_modules/*
+
+# open manus
+OpenManus/
