@@ -175,3 +175,6 @@ cython_debug/
 
 # api key
 gemini_api_key.env
+
+# frontend extra files
+*/node_modules/*
