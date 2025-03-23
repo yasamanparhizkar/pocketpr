@@ -9,6 +9,7 @@ from datetime import datetime
 import sys
 sys.path.append(".")
 from backend.request_info import chatI
+from backend.post_on_linkedin import main
 
 
 app = FastAPI()

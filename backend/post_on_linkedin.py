@@ -16,7 +16,7 @@ class Config:
     chrome_path: str = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     headless: bool = False
     model: str = "gemini-2.0-flash-exp"
-    
+
 
 # setup configs
 config = Config(
@@ -38,9 +38,8 @@ browser = Browser(
 
 controller = Controller()
 
-async def main():
+async def main(config):
     # create agent with the model
-    print(config)
     agent = Agent(
         task=f"""Navigate to LinkedIn and post a message.
 
@@ -55,6 +54,8 @@ async def main():
         controller=controller,
     )
     history = await agent.run()
-    print(f"RESULT: {history}")
 
-asyncio.run(main())
+if __name__ == "__main__":
+    with open("backend/message.txt") as file:
+        config.post = file.read()
+    asyncio.run(main(config))

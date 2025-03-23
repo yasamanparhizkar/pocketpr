@@ -1,5 +1,11 @@
 from google import genai
 import os
+import asyncio
+import subprocess
+
+import sys
+sys.path.append(".")
+from backend.post_on_linkedin import main, config, llm, browser, controller
 
 
 class chatI():
@@ -59,6 +65,11 @@ class chatI():
 
         # get the final post
         response = self.client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
+        with open("backend/message.txt", "w") as file:
+            file.write(response.text)
+
+        # call browser-use
+        subprocess.call(["python", "backend/post_on_linkedin.py"])
 
 
 if __name__ == "__main__":
