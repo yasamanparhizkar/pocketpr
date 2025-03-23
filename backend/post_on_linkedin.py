@@ -48,6 +48,7 @@ async def main():
         1. Navigate to {config.base_url}
         2. Click on the text bar saying "Share a post".
         3. In the pop up window, type the following message: "{config.post}"
+        4. Stop here; do NOT post the message.
         """,
         llm=llm,
         browser=browser,
