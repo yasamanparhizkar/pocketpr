@@ -172,3 +172,12 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# api key
+gemini_api_key.env
+
+# frontend extra files
+*/node_modules/*
+
+# open manus
+OpenManus/
