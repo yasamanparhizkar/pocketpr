@@ -24,7 +24,7 @@ client = genai.Client(api_key="AIzaSyCUI6IiybH9c04MGPbttx8c2xnm0ajtvHA")
 
 
 keep_going = True
-count = 0
+count = 1
 questions = [
     "What is the name of the event?", 
     "What was the time and place of the event?", 
