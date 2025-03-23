@@ -18,9 +18,9 @@ class chatI():
             "What was the time and place of the event?", 
             "What was the purpose of your attendance and your role in the event?",
             "What were your key takeaways or insights you gained?",
-            "What was the main theme or purpose of the event?",
-            "How would you like to frame your call to action?",
-            "Would you like hashtags at the end of your post for greater reach?"
+            # "What was the main theme or purpose of the event?",
+            # "How would you like to frame your call to action?",
+            # "Would you like hashtags at the end of your post for greater reach?"
         ]
         self.responses_list = []
         self.current_question = -1
@@ -50,18 +50,16 @@ class chatI():
     def get_final_post(self):
         """Make the final post from the responses."""
         prompt = """
-            I would like you to create a LinkedIn post that has a friendly,
-            exciting and fresh tone with the use of emojis when necessary.
-            I also would like the text to be in paragraph form, with space in
-            between the hashtags and the main text. I'd also like some space between
-            the title, date, and the main paragraph.
-            Title and date should be on one line at the top.
-            Here is the information you need to know:
+            I would like you to create a LinkedIn post with a professional but enthusiastic tone.
+            Generate the text in pure text without any html or markdown syntax.
+            Do not use emojies. Have between 3 to 5 hashtags at the end.
+            Include the information from below question and answer pairs.
         """
         qa = ""
         for (q, a) in self.responses_list:
             qa = qa + f"Question: {q} - " + f"Answer: {a}" + "\n"
         prompt = prompt + qa
+        print(prompt)
 
         # get the final post
         response = self.client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
