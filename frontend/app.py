@@ -6,7 +6,13 @@ import uvicorn
 import os
 from datetime import datetime
 
+import sys
+sys.path.append(".")
+from backend.request_info import chatI
+
+
 app = FastAPI()
+chati = chatI()
 
 # Enable CORS for the frontend
 app.add_middleware(
@@ -23,9 +29,8 @@ class ChatMessage(BaseModel):
 @app.post("/chat")
 async def chat(message: ChatMessage):
     # Split the message into words and add 'boogie' after each word
-    words = message.message.split()
-    boogie_message = ' '.join(f"{word} boogie" for word in words)
-    return {"response": boogie_message}
+    next_question = chati.get_answer(message.message)
+    return {"response": next_question}
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
