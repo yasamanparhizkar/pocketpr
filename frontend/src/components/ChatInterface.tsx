@@ -111,86 +111,90 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg">
-      <div className="h-[600px] overflow-y-auto p-4">
-        {messages.map((message: Message, index: number) => (
-          <div
-            key={index}
-            className={`mb-4 ${
-              message.isUser ? 'text-right' : 'text-left'
-            }`}
-          >
+    <div className="bg-[#2d3b60] shadow-xl flex flex-col h-[calc(100vh-7rem)]">
+      <div className="flex-1 overflow-y-auto p-4 bg-[#262f55]">
+        <div className="max-w-4xl mx-auto">
+          {messages.map((message: Message, index: number) => (
             <div
-              className={`inline-block p-3 rounded-lg ${
-                message.isUser
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 text-gray-800'
+              key={index}
+              className={`mb-4 ${
+                message.isUser ? 'text-right' : 'text-left'
               }`}
             >
-              {message.text}
+              <div
+                className={`inline-block p-3 rounded-lg ${
+                  message.isUser
+                    ? 'bg-[#f76960] text-white'
+                    : 'bg-[#fed34b] text-[#262f55]'
+                }`}
+              >
+                {message.text}
+              </div>
             </div>
-          </div>
-        ))}
-        {isLoading && (
-          <div className="text-left">
-            <div className="inline-block p-3 rounded-lg bg-gray-200 text-gray-800">
-              Thinking...
+          ))}
+          {isLoading && (
+            <div className="text-left">
+              <div className="inline-block p-3 rounded-lg bg-[#e33a7c] text-white">
+                Thinking...
+              </div>
             </div>
-          </div>
-        )}
-        <div ref={messagesEndRef} />
+          )}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
-      <div className="p-4 border-t">
-        {uploadStatus && (
-          <div className="text-sm text-gray-600 mb-2 text-center">
-            {uploadStatus}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="flex gap-2 items-center">
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileUpload}
-            className="hidden"
-            accept="image/*"
-          />
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            className="p-2 text-gray-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full transition-colors"
-            title="Upload Photo"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      <div className="p-4 border-t border-[#e33a7c] bg-[#2d3b60]">
+        <div className="max-w-4xl mx-auto">
+          {uploadStatus && (
+            <div className="text-sm text-[#fed34b] mb-2 text-center">
+              {uploadStatus}
+            </div>
+          )}
+          <form onSubmit={handleSubmit} className="flex gap-2 items-center">
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileUpload}
+              className="hidden"
+              accept="image/*"
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="p-2 text-[#fed34b] hover:text-[#f76960] focus:outline-none focus:ring-2 focus:ring-[#e33a7c] rounded-full transition-colors"
+              title="Upload Photo"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-          </button>
-          <input
-            type="text"
-            value={inputText}
-            onChange={handleInputChange}
-            placeholder="Type your message..."
-            className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
-          />
-          <button
-            type="submit"
-            disabled={isLoading || !inputText.trim()}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Send
-          </button>
-        </form>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </button>
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleInputChange}
+              placeholder="Type your message..."
+              className="flex-1 p-2 border rounded-lg bg-[#ffffff] text-[#262f55] placeholder-[#2d3b60]/50 focus:outline-none focus:ring-2 focus:ring-[#e33a7c]"
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              disabled={isLoading || !inputText.trim()}
+              className="px-4 py-2 bg-[#f76960] text-white rounded-lg hover:bg-[#e33a7c] focus:outline-none focus:ring-2 focus:ring-[#e33a7c] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              Send
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
