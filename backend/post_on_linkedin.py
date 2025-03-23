@@ -40,14 +40,14 @@ controller = Controller()
 
 async def main():
     # create agent with the model
+    print(config)
     agent = Agent(
-        task=f"""Navigate to LinkedIn and post a message with attached images.
+        task=f"""Navigate to LinkedIn and post a message.
 
         Here are the steps you need to follow:
         1. Navigate to {config.base_url}
         2. Click on the text bar saying "Share a post".
         3. In the pop up window, type the following message: "{config.post}"
-        4. Stop here; Do NOT post the message.
         """,
         llm=llm,
         browser=browser,

@@ -33,7 +33,7 @@ async def upload_file(file: UploadFile = File(...)):
         # Create a unique filename using timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"{timestamp}_{file.filename}"
-        file_path = os.path.join("../images", filename)
+        file_path = os.path.join("images", filename)
         
         # Save the file
         with open(file_path, "wb") as buffer:
